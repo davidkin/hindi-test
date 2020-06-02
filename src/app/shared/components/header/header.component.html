@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>{{ 'HeaderComponent.title' | translate }}</span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <span>England</span>
+            </button>
+            <button mat-menu-item>
+              <span>Hindi</span>
+            </button>
+            <button mat-menu-item>
+              <span>Ukraine</span>
+            </button>
+        </mat-menu>
+
+        <span class="example-spacer"></span>
+        
+        <button mat-icon-button (click)="translate.use('en')">EN</button>
+        <button mat-icon-button (click)="translate.use('hi')">HI</button>
+    </mat-toolbar-row>
+</mat-toolbar>
