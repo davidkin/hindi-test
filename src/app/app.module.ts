@@ -7,7 +7,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatDatepickerModule,
-  MatButtonModule
+  MatButtonModule,
+  MatNativeDateModule,
 } from '@angular/material';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { MeetingFormComponent } from './components/meeting-form/meeting-form.component';
 import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,11 +29,13 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
+    ReactiveFormsModule,
 
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

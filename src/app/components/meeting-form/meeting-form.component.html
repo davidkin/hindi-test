@@ -1,24 +1,32 @@
 <h2>{{ 'Meeting.title' | translate }}</h2>
 
-<form class="form">
+<form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="form-control">
         <mat-label>{{ 'Meeting.fullName' | translate }}:</mat-label>
-        <input matInput placeholder="Kirill Pietkov">
+        <input matInput placeholder="Kirill Pietkov" formControlName="fullName">
     </mat-form-field>
 
     <mat-form-field class="form-control">
         <mat-label>{{ 'Meeting.meetingDate' | translate }}:</mat-label>
-        <input matInput>
+
+        <input matInput
+            [matDatepicker]="picker1" 
+            [min]="startDate" 
+            [max]="maxDate" 
+            formControlName="meetingDate"
+        >
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1 color="primary" [startAt]="startDate"></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="form-control">
         <mat-label>{{ 'Meeting.startTime' | translate }}:</mat-label>
-        <input matInput>
+        <input type="time" matInput placeholder="05:00" formControlName="startTime">
     </mat-form-field>
 
     <mat-form-field class="form-control">
         <mat-label>{{ 'Meeting.endTime' | translate }}:</mat-label>
-        <input matInput>
+        <input type="time" matInput placeholder="05:10" formControlName="endTime">
     </mat-form-field>
 
     <button mat-raised-button color="primary">{{ 'Meeting.submit' | translate }}</button>
