@@ -1,0 +1,25 @@
+<h2>{{ 'Meeting.title' | translate }}</h2>
+
+<form class="form">
+    <mat-form-field class="form-control">
+        <mat-label>{{ 'Meeting.fullName' | translate }}:</mat-label>
+        <input matInput placeholder="Kirill Pietkov">
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>{{ 'Meeting.meetingDate' | translate }}:</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>{{ 'Meeting.startTime' | translate }}:</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <mat-form-field class="form-control">
+        <mat-label>{{ 'Meeting.endTime' | translate }}:</mat-label>
+        <input matInput>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary">{{ 'Meeting.submit' | translate }}</button>
+</form>
