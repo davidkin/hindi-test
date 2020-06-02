@@ -1,5 +1,18 @@
 {
-  "HeaderComponent": {
-    "title": "समय क्षेत्र (यु.टी. सी)"
+  "Header": {
+    "title": "समय क्षेत्र (यु.टी. सी)",
+    "menu": {
+      "england": "इंगलैंड",
+      "hindi": "हिन्दी"
+    }
+  },
+
+  "Meeting": {
+    "title": "मीटिंग फॉर्म",
+    "fullName": "पूरा नाम",
+    "meetingDate": "मिलने की तारीख",
+    "startTime": "समय शुरू",
+    "endTime": "अंतिम समय",
+    "submit": "प्रस्तुत"
   }
 }

@@ -1,19 +1,16 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <span>{{ 'HeaderComponent.title' | translate }}</span>
+        <span>{{ 'Header.title' | translate }}</span>
         <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
         </button>
 
         <mat-menu #menu="matMenu">
             <button mat-menu-item>
-              <span>England</span>
+              <span>{{ 'Header.menu.england' | translate }}</span>
             </button>
             <button mat-menu-item>
-              <span>Hindi</span>
-            </button>
-            <button mat-menu-item>
-              <span>Ukraine</span>
+              <span>{{ 'Header.menu.hindi' | translate }}</span>
             </button>
         </mat-menu>
 

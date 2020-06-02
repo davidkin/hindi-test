@@ -1,6 +1,19 @@
 {
-  "HeaderComponent": {
-    "title": "Time Zone (UTC)"
+  "Header": {
+    "title": "Time Zone (UTC)",
+    "menu": {
+      "england": "England",
+      "hindi": "Hindi"
+    }
+  },
+
+  "Meeting": {
+    "title": "Meeting Form",
+    "fullName": "Full Name",
+    "meetingDate": "Meeting Date",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "submit": "Submit"
   }
 }
   
