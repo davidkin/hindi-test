@@ -14,6 +14,10 @@ export class LocalStorageService {
   addDataToStorage(key, value): boolean {
     localStorage.setItem(key, value);
 
-    return localStorage.getItem(key) ? true : false;
+    return !!localStorage.getItem(key);
+  }
+
+  hasStoreData(key): boolean {
+    return !!localStorage.getItem(key);
   }
 }

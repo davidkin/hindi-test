@@ -37,7 +37,6 @@ export class MeetingFormComponent implements OnInit {
   submitted = false;
   storeError = false;
 
-  fromData = [];
   form: FormGroup;
   startDate: Date = new Date(2020, 5, 4);
   maxDate: Date = new Date(2020, 6, 4);
@@ -64,21 +63,33 @@ export class MeetingFormComponent implements OnInit {
       return;
     }
 
+    let meetings = [];
+
     const formData: IMeet = {
       ...this.form.value,
       meetingDate: this.form.value.meetingDate.format('DD MM YYYY')
     };
 
-    this.fromData.push(formData);
+    meetings.push(formData);
 
-    const encryptData = this.encryptService.encrypt(this.fromData);
-    const isStoreDataSuccess = this.localStorageService.addDataToStorage('data', encryptData);
+    const encryptData = this.encryptService.encrypt(meetings);
+    const hasStoreData = this.localStorageService.hasStoreData('data');
 
-    if (isStoreDataSuccess) {
-      this.form.reset();
-      this.route.navigate(['/meeting-list']);
-    } else {
-      this.storeError = true;
+    if (!hasStoreData) {
+      const isStoreDataSuccess = this.localStorageService.addDataToStorage('data', encryptData);
+      this.storeCheck(isStoreDataSuccess);
+
+    } else if (hasStoreData) {
+      const data = this.localStorageService.getDataFromStorage('data');
+      const decryptData = this.encryptService.decrypt(data);
+
+      meetings = JSON.parse(decryptData);
+      meetings.push(formData);
+
+      const encryptNewData = this.encryptService.encrypt(meetings);
+      const isStoreDataSuccess = this.localStorageService.addDataToStorage('data', encryptNewData);
+
+      this.storeCheck(isStoreDataSuccess);
     }
   }
 
@@ -90,4 +101,14 @@ export class MeetingFormComponent implements OnInit {
       endTime: ['12:02', [Validators.required] ]
     });
   }
+
+  storeCheck(isSuccess: boolean): void {
+    if (isSuccess) {
+      this.form.reset();
+      this.route.navigate(['/meeting-list']);
+    } else {
+      this.storeError = true;
+    }
+  }
+
 }
