@@ -33,7 +33,7 @@ export const MY_FORMATS = {
 })
 export class MeetingFormComponent implements OnInit {
   submitted = false;
-
+  fromData = [];
   form: FormGroup;
   startDate: Date = new Date(2020, 5, 4);
   maxDate: Date = new Date(2020, 6, 4);
@@ -49,12 +49,7 @@ export class MeetingFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      fullName: ['', [Validators.required] ],
-      meetingDate: ['', [Validators.required] ],
-      startTime: ['', [Validators.required] ],
-      endTime: ['', [Validators.required] ]
-    });
+    this.formInit();
   }
 
   onSubmit(): void {
@@ -68,12 +63,24 @@ export class MeetingFormComponent implements OnInit {
       ...this.form.value,
       meetingDate: this.form.value.meetingDate.format('DD MM YYYY')
     };
-    const encryptData = this.encryptService.encrypt(formData);
 
-    localStorage.setItem('formData', encryptData);
+    this.fromData.push(formData);
+
+    const encryptData = this.encryptService.encrypt(this.fromData);
+
+    localStorage.setItem('data', encryptData);
 
     this.form.reset();
 
     this.route.navigate(['/meeting-list']);
+  }
+
+  formInit(): void {
+    this.form = this.formBuilder.group({
+      fullName: ['', [Validators.required] ],
+      meetingDate: ['', [Validators.required] ],
+      startTime: ['12:01', [Validators.required] ],
+      endTime: ['12:02', [Validators.required] ]
+    });
   }
 }
