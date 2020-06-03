@@ -6,6 +6,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { EncryptService } from 'src/app/shared/services/encrypt.service';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
+import { IMeet } from 'src/app/shared/interfaces/meet';
 
 export const MY_FORMATS = {
   parse: {
@@ -63,7 +64,7 @@ export class MeetingFormComponent implements OnInit {
       return;
     }
 
-    const formData = {
+    const formData: IMeet = {
       ...this.form.value,
       meetingDate: this.form.value.meetingDate.format('DD MM YYYY')
     };
