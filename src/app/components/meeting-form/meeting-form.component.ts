@@ -32,8 +32,9 @@ export const MY_FORMATS = {
   ]
 })
 export class MeetingFormComponent implements OnInit {
-  myForm: FormGroup;
+  submitted = false;
 
+  form: FormGroup;
   startDate: Date = new Date(2020, 5, 4);
   maxDate: Date = new Date(2020, 6, 4);
 
@@ -43,8 +44,12 @@ export class MeetingFormComponent implements OnInit {
     private route: Router
   ) { }
 
+  get f() {
+    return this.form.controls;
+  }
+
   ngOnInit(): void {
-    this.myForm = this.formBuilder.group({
+    this.form = this.formBuilder.group({
       fullName: ['Kirill Pietkov', [Validators.required] ],
       meetingDate: ['', [Validators.required] ],
       startTime: ['12:00', [Validators.required] ],
@@ -53,15 +58,21 @@ export class MeetingFormComponent implements OnInit {
   }
 
   onSubmit(): void {
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      return;
+    }
+
     const formData = {
-      ...this.myForm.value,
-      meetingDate: this.myForm.value.meetingDate.format('DD MM YYYY')
+      ...this.form.value,
+      meetingDate: this.form.value.meetingDate.format('DD MM YYYY')
     };
     const encryptData = this.encryptService.encrypt(formData);
 
     localStorage.setItem('formData', encryptData);
 
-    this.myForm.reset();
+    this.form.reset();
 
     this.route.navigate(['/meeting-list']);
   }
