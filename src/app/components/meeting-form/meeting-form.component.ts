@@ -5,6 +5,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 // import * as moment from 'moment';
 import { EncryptService } from 'src/app/shared/services/encrypt.service';
 import { Router } from '@angular/router';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 export const MY_FORMATS = {
   parse: {
@@ -33,6 +34,8 @@ export const MY_FORMATS = {
 })
 export class MeetingFormComponent implements OnInit {
   submitted = false;
+  storeError = false;
+
   fromData = [];
   form: FormGroup;
   startDate: Date = new Date(2020, 5, 4);
@@ -41,6 +44,7 @@ export class MeetingFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private encryptService: EncryptService,
+    private localStorageService: LocalStorageService,
     private route: Router
   ) { }
 
@@ -67,12 +71,14 @@ export class MeetingFormComponent implements OnInit {
     this.fromData.push(formData);
 
     const encryptData = this.encryptService.encrypt(this.fromData);
+    const isStoreDataSuccess = this.localStorageService.addDataToStorage('data', encryptData);
 
-    localStorage.setItem('data', encryptData);
-
-    this.form.reset();
-
-    this.route.navigate(['/meeting-list']);
+    if (isStoreDataSuccess) {
+      this.form.reset();
+      this.route.navigate(['/meeting-list']);
+    } else {
+      this.storeError = true;
+    }
   }
 
   formInit(): void {

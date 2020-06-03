@@ -1,25 +1,24 @@
-<h2 class="title">{{ 'Meeting.title' | translate }}</h2>
+<h2 class="title">
+    {{ 'Meeting.title' | translate }}
+    <p *ngIf="storeError">Store Error</p>
+</h2>
 
 <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
     <mat-form-field class="form-control">
         <mat-label>{{ 'Meeting.fullName' | translate }}</mat-label>
 
         <input matInput 
-            [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }"
             placeholder="Kirill Pietkov" 
             formControlName="fullName"
         />
         
-        <div *ngIf="submitted && f.fullName.errors" class="invalid-feedback">
-            <span *ngIf="f.fullName.errors.required">Full Name is required</span>
-        </div>
+        <mat-error *ngIf="submitted && f.fullName.errors">Full Name is required</mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-control">
         <mat-label>{{ 'Meeting.meetingDate' | translate }}</mat-label>
 
         <input matInput
-            [ngClass]="{ 'is-invalid': submitted && f.meetingDate.errors }"
             [matDatepicker]="picker" 
             [min]="startDate" 
             [max]="maxDate" 
@@ -30,23 +29,18 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker color="primary" [startAt]="startDate"></mat-datepicker>
 
-        <div *ngIf="submitted && f.meetingDate.errors" class="invalid-feedback">
-            <div *ngIf="f.meetingDate.errors.required">Meeting Date is required</div>
-        </div>
+        <mat-error *ngIf="submitted && f.meetingDate.errors">Meeting Date is required</mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-control">
         <mat-label>{{ 'Meeting.startTime' | translate }}</mat-label>
         <input type="time" 
-            [ngClass]="{ 'is-invalid': submitted && f.startTime.errors }"
             matInput 
             placeholder="05:00" 
             formControlName="startTime"
         />
-        <div *ngIf="submitted && f.startTime.errors" class="invalid-feedback">
-            <div *ngIf="f.startTime.errors.required">Start time is required</div>
-        </div>
 
+        <mat-error *ngIf="submitted && f.startTime.errors">Start time is required</mat-error>
     </mat-form-field>
 
     <mat-form-field class="form-control">
@@ -57,10 +51,8 @@
             placeholder="05:10" 
             formControlName="endTime"
         />
-
-        <div *ngIf="submitted && f.endTime.errors" class="invalid-feedback">
-            <div *ngIf="f.endTime.errors.required">End Time is required</div>
-        </div>
+        
+        <mat-error *ngIf="submitted && f.endTime.errors">End Time is required</mat-error>
     </mat-form-field>
 
     <button mat-raised-button color="primary">{{ 'Meeting.submit' | translate }}</button>

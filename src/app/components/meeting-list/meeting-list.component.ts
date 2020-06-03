@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 
 @Component({
   selector: 'app-meeting-list',
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 export class MeetingListComponent implements OnInit {
   panelOpenState = false;
 
-  constructor() { }
+  constructor(
+    private localStorageService: LocalStorageService
+  ) { }
 
   ngOnInit() {
+    this.localStorageService.getDataFromStorage('data');
   }
 
 }
