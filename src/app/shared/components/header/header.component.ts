@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment-timezone';
+import { ShareService } from '../../services/share.service';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +10,19 @@ import * as moment from 'moment-timezone';
 })
 export class HeaderComponent implements OnInit {
   @Input() translate: TranslateService;
+  title = 'Header.menu.usa';
 
-  usaTime = moment.tz('America/New_York').format();
-
-  constructor() { }
+  constructor(
+    private shareService: ShareService
+  ) { }
 
   ngOnInit() {
-    console.log('England:', this.usaTime);
+    this.shareService.timeZone = this.title;
+  }
 
+  changeTimeZone(value: string) {
+    this.title = value;
+    this.shareService.timeZone = value;
   }
 
 }

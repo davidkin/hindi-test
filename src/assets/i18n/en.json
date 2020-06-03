@@ -1,6 +1,6 @@
 {
   "Header": {
-    "title": "Time Zone (UTC)",
+    "utc": "(UTC)",
     "menu": {
       "usa": "USA",
       "hindi": "Hindi"
@@ -15,7 +15,7 @@
     "endTime": "End Time",
     "submit": "Submit"
   },
-  
+
   "MeetingList": {
     "back": "Back to form",
     "meet": "Meeting",

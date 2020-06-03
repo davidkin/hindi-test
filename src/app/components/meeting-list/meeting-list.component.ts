@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { EncryptService } from 'src/app/shared/services/encrypt.service';
 import { IMeet } from 'src/app/shared/interfaces/meet';
+import { ShareService } from 'src/app/shared/services/share.service';
 
 @Component({
   selector: 'app-meeting-list',
@@ -11,10 +12,12 @@ import { IMeet } from 'src/app/shared/interfaces/meet';
 export class MeetingListComponent implements OnInit {
   panelOpenState = false;
   meetingData: IMeet[];
+  timeZone: string;
 
   constructor(
     private localStorageService: LocalStorageService,
     private encryptService: EncryptService,
+    private sahreService: ShareService
   ) { }
 
   ngOnInit() {
@@ -22,6 +25,7 @@ export class MeetingListComponent implements OnInit {
     const decryptData = this.encryptService.decrypt(storeData);
 
     this.meetingData = JSON.parse(decryptData);
+    this.timeZone = this.sahreService.timeZone;
   }
 
 }

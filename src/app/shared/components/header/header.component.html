@@ -1,15 +1,15 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <span>{{ 'Header.title' | translate }}</span>
+        <span>{{ title | translate }} {{ 'Header.utc' | translate }}</span>
         <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
         </button>
 
         <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="changeTimeZone('Header.menu.usa') ">
               <span>{{ 'Header.menu.usa' | translate }}</span>
             </button>
-            <button mat-menu-item>
+            <button mat-menu-item (click)="changeTimeZone('Header.menu.hindi') ">
               <span>{{ 'Header.menu.hindi' | translate }}</span>
             </button>
         </mat-menu>
