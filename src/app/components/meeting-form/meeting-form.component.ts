@@ -4,6 +4,7 @@ import {MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS} from '@angular/mater
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 // import * as moment from 'moment';
 import { EncryptService } from 'src/app/shared/services/encrypt.service';
+import { Router } from '@angular/router';
 
 export const MY_FORMATS = {
   parse: {
@@ -33,12 +34,13 @@ export const MY_FORMATS = {
 export class MeetingFormComponent implements OnInit {
   myForm: FormGroup;
 
-  startDate = new Date(2020, 5, 4);
-  maxDate = new Date(2020, 6, 4);
+  startDate: Date = new Date(2020, 5, 4);
+  maxDate: Date = new Date(2020, 6, 4);
 
   constructor(
     private formBuilder: FormBuilder,
-    private encryptService: EncryptService
+    private encryptService: EncryptService,
+    private route: Router
   ) { }
 
   ngOnInit(): void {
@@ -50,7 +52,6 @@ export class MeetingFormComponent implements OnInit {
     });
   }
 
-
   onSubmit(): void {
     const formData = {
       ...this.myForm.value,
@@ -61,5 +62,7 @@ export class MeetingFormComponent implements OnInit {
     localStorage.setItem('formData', encryptData);
 
     this.myForm.reset();
+
+    this.route.navigate(['/meeting-list']);
   }
 }

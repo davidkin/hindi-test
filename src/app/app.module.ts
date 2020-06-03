@@ -17,11 +17,13 @@ import { AppComponent } from './app.component';
 import { MeetingFormComponent } from './components/meeting-form/meeting-form.component';
 import { SharedModule } from './shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MeetingListComponent } from './components/meeting-list/meeting-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MeetingFormComponent
+    MeetingFormComponent,
+    MeetingListComponent
   ],
   imports: [
     BrowserModule,
