@@ -1,4 +1,4 @@
-<h2>{{ 'Meeting.title' | translate }}</h2>
+<h2 class="title">{{ 'Meeting.title' | translate }}</h2>
 
 <form class="form" [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <mat-form-field class="form-control">
@@ -10,13 +10,15 @@
         <mat-label>{{ 'Meeting.meetingDate' | translate }}:</mat-label>
 
         <input matInput
-            [matDatepicker]="picker1" 
+            [matDatepicker]="picker" 
             [min]="startDate" 
             [max]="maxDate" 
+            (focus)="picker.open()" 
             formControlName="meetingDate"
+            readonly
         >
-        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-        <mat-datepicker #picker1 color="primary" [startAt]="startDate"></mat-datepicker>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker color="primary" [startAt]="startDate"></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field class="form-control">

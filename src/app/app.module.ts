@@ -9,6 +9,9 @@ import {
   MatDatepickerModule,
   MatButtonModule,
   MatNativeDateModule,
+  MatListModule,
+  MatExpansionModule,
+  MatIconModule
 } from '@angular/material';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -38,6 +41,9 @@ import { MeetingListComponent } from './components/meeting-list/meeting-list.com
     MatDatepickerModule,
     MatButtonModule,
     MatNativeDateModule,
+    MatListModule,
+    MatExpansionModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./meeting-list.component.scss']
 })
 export class MeetingListComponent implements OnInit {
+  panelOpenState = false;
 
   constructor() { }
 

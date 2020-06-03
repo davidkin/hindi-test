@@ -1,0 +1,15 @@
+.mat-accordion {
+    margin: 40px auto;
+    display: block;
+    width: 500px;
+
+    .panel-info {
+        text-align: left;
+    }
+}
+
+.back {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}

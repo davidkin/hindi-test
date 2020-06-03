@@ -1,1 +1,18 @@
-<p>meeting-list works!</p>
+<a [routerLink]="['/']" class="back">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+    Back to form
+</a>
+
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" >
+      
+        <mat-expansion-panel-header>
+            <mat-panel-title>Self aware panel</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="panel-info">
+            <p>I'm visible because I am open</p>
+        </div>
+
+    </mat-expansion-panel>
+</mat-accordion>
