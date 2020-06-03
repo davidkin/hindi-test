@@ -50,10 +50,10 @@ export class MeetingFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      fullName: ['Kirill Pietkov', [Validators.required] ],
+      fullName: ['', [Validators.required] ],
       meetingDate: ['', [Validators.required] ],
-      startTime: ['12:00', [Validators.required] ],
-      endTime: ['12:10', [Validators.required] ]
+      startTime: ['', [Validators.required] ],
+      endTime: ['', [Validators.required] ]
     });
   }
 
