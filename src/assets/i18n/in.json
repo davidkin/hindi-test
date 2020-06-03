@@ -7,12 +7,26 @@
     }
   },
 
-  "Meeting": {
+  "MeetingForm": {
     "title": "मीटिंग फॉर्म",
     "fullName": "पूरा नाम",
     "meetingDate": "मिलने की तारीख",
     "startTime": "समय शुरू",
     "endTime": "अंतिम समय",
     "submit": "प्रस्तुत"
+  },
+
+  "MeetingList": {
+    "back": "वापस फार्म के लिए",
+    "meet": "मुलाकात",
+    "timeZone": "समय क्षेत्र",
+    "date": "तारीख",
+    "startTime": "समय शुरू",
+    "endTime": "अंतिम समय"
+  },
+
+  "Error": {
+    "required": "आवश्यक है",
+    "store": "स्टोर त्रुटि"
   }
 }

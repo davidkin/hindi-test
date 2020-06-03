@@ -7,13 +7,27 @@
     }
   },
 
-  "Meeting": {
+  "MeetingForm": {
     "title": "Meeting Form",
     "fullName": "Full Name",
     "meetingDate": "Meeting Date",
     "startTime": "Start Time",
     "endTime": "End Time",
     "submit": "Submit"
+  },
+  
+  "MeetingList": {
+    "back": "Back to form",
+    "meet": "Meeting",
+    "timeZone": "Time Zone",
+    "date": "Date",
+    "startTime": "Start Time",
+    "endTime": "End Time"
+  },
+
+  "Error": {
+    "required": "is required",
+    "store": "Store Error"
   }
 }
   
